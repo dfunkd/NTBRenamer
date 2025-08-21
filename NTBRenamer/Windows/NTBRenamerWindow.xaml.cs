@@ -35,12 +35,12 @@ public partial class NTBRenamerWindow : Window
         => Close();
     #endregion
 
-    #region Process Command
-    private static readonly RoutedCommand processCommand = new();
-    public static RoutedCommand ProcessCommand = processCommand;
-    private void CanExecuteProcessCommand(object sender, CanExecuteRoutedEventArgs e)
+    #region FileCleanup Command
+    private static readonly RoutedCommand fileCleanupCommand = new();
+    public static RoutedCommand FileCleanupCommand = fileCleanupCommand;
+    private void CanExecuteFileCleanupCommand(object sender, CanExecuteRoutedEventArgs e)
         => e.CanExecute = e.Source is Control && DataContext is NTBRenamerViewModel vm && vm.IsProcessing == false;
-    private async void ExecutedProcessCommand(object sender, ExecutedRoutedEventArgs e)
+    private async void ExecutedFileCleanupCommand(object sender, ExecutedRoutedEventArgs e)
     {
         if (DataContext is NTBRenamerViewModel vm)
         {
@@ -55,7 +55,37 @@ public partial class NTBRenamerWindow : Window
                 vm.Files = [];
                 vm.Stopwatch = Stopwatch.StartNew();
 
-                vm.ProcessFiles();
+                vm.FileCleanup();
+
+                vm.Stopwatch.Stop();
+                vm.UpdateStopwatch();
+                vm.IsProcessing = false;
+            });
+        }
+    }
+    #endregion
+
+    #region Process Command
+    private static readonly RoutedCommand processCommand = new();
+    public static RoutedCommand ProcessCommand = processCommand;
+    private void CanExecuteProcessCommand(object sender, CanExecuteRoutedEventArgs e)
+        => e.CanExecute = e.Source is Control && DataContext is NTBRenamerViewModel vm && vm.IsProcessing == false;
+    private async void ExecutedProcessCommand(object sender, ExecutedRoutedEventArgs e)
+    {
+        if (DataContext is NTBRenamerViewModel vm)
+        {
+            await Task.Run(async () =>
+            {
+                vm.IsProcessing = true;
+                vm.FailedCount = 0;
+                vm.FileCount = 0;
+                vm.ProcessedCount = 0;
+                vm.SkipCount = 0;
+                vm.Directories = [];
+                vm.Files = [];
+                vm.Stopwatch = Stopwatch.StartNew();
+
+                await vm.ProcessFiles();
 
                 vm.Stopwatch.Stop();
                 vm.UpdateStopwatch();

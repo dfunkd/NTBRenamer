@@ -18,6 +18,7 @@
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static local:NTBRenamerWindow.ChangeDirectoryCommand}" CanExecute="CanExecuteChangeDirectoryCommand" Executed="ExecutedChangeDirectoryCommand" />
         <CommandBinding Command="{x:Static local:NTBRenamerWindow.CloseCommand}" CanExecute="CanExecuteCloseCommand" Executed="ExecutedCloseCommand" />
+        <CommandBinding Command="{x:Static local:NTBRenamerWindow.FileCleanupCommand}" CanExecute="CanExecuteFileCleanupCommand" Executed="ExecutedFileCleanupCommand" />
         <CommandBinding Command="{x:Static local:NTBRenamerWindow.ProcessCommand}" CanExecute="CanExecuteProcessCommand" Executed="ExecutedProcessCommand" />
         <CommandBinding Command="{x:Static local:NTBRenamerWindow.RunBatchCommand}" CanExecute="CanExecuteRunBatchCommand" Executed="ExecutedRunBatchCommand" />
         <CommandBinding Command="{x:Static local:NTBRenamerWindow.StripExtensionsCommand}" CanExecute="CanExecuteStripExtensionsCommand" Executed="ExecutedStripExtensionsCommand" />
@@ -117,6 +118,12 @@
             <Button DockPanel.Dock="Left" Command="local:NTBRenamerWindow.StripExtensionsCommand" Height="25" Margin="5, 0" VerticalAlignment="Center" Width="150">
                 <Button.Content>
                     <TextBlock Text="Strip Extensions" />
+                </Button.Content>
+            </Button>
+
+            <Button DockPanel.Dock="Left" Command="local:NTBRenamerWindow.FileCleanupCommand" Height="25" Margin="5, 0" VerticalAlignment="Center" Width="150">
+                <Button.Content>
+                    <TextBlock Text="File Cleanup" />
                 </Button.Content>
             </Button>
         </DockPanel>

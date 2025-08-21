@@ -149,7 +149,7 @@ public class NTBRenamerViewModel : BaseViewModel
     #endregion
 
     #region Private Methods
-    public void ExecuteBatchFile(string batchPath, string dir)
+    public static void ExecuteBatchFile(string batchPath, string dir)
     {
         try
         {
@@ -177,6 +177,40 @@ public class NTBRenamerViewModel : BaseViewModel
         }
     }
 
+    public void FileCleanup()
+    {
+        PopulateAllDirectories();
+        PopulateAllFiles();
+        List<FileInfo> pdfs = [];
+        List<FileInfo> pss = [];
+
+        foreach (var file in Files)
+        {
+            FileInfo fileInfo = new(file);
+            if (!fileInfo.Exists)
+                continue;
+            if (fileInfo.Extension == ".pdf")
+                pdfs.Add(fileInfo);
+            if (fileInfo.Extension == ".ps")
+                pss.Add(fileInfo);
+            UpdateStopwatch();
+        }
+
+        foreach (var pdf in pdfs)
+        {
+            var ps = pss.FirstOrDefault(f => f.Name.StartsWith(pdf.Name.Replace("pdf", string.Empty)));
+            if (ps is null)
+            {
+                SkipCount++;
+                UpdateStopwatch();
+                continue;
+            }
+            ps?.Delete();
+            ProcessedCount++;
+            UpdateStopwatch();
+        }
+    }
+
     private void PopulateAllDirectories()
     {
         Directories = [$"{SelectedDirectory}"];
@@ -187,7 +221,10 @@ public class NTBRenamerViewModel : BaseViewModel
     {
         Files = [];
         foreach (string dir in Directories)
+        {
             Files.AddRange(Directory.GetFiles(dir));
+            UpdateStopwatch();
+        }
     }
 
     private Task ProcessFiles(List<string> files)
@@ -263,6 +300,7 @@ public class NTBRenamerViewModel : BaseViewModel
             int take = Files.Count - skip > takeQty ? takeQty : Files.Count - skip;
             tasks.Add(Task.Run(async () => await ProcessFiles([.. files.Skip(skip).Take(take)])));
             count++;
+            UpdateStopwatch();
         }
         await Task.WhenAll([.. tasks]);
         UpdateStopwatch();
@@ -297,10 +335,11 @@ public class NTBRenamerViewModel : BaseViewModel
         PopulateAllDirectories();
         PopulateAllFiles();
 
-        foreach(string directory in Directories)
+        UpdateStopwatch();
+        foreach (string directory in Directories)
         {
             Files.AddRange(Directory.GetFiles(directory));
-            foreach(string file in Files)
+            foreach (string file in Files)
             {
                 if (!File.Exists(file))
                     continue;
@@ -314,8 +353,11 @@ public class NTBRenamerViewModel : BaseViewModel
                     continue;
 
                 File.Move(file, stripped);
+                UpdateStopwatch();
             }
+            UpdateStopwatch();
         }
+        UpdateStopwatch();
     }
 
     public string UpdateStopwatch()

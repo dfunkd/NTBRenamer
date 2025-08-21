@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NTBRenamer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7a7038df6662581ed74f0000bb2b2c3ccb38bfe6")]
 [assembly: System.Reflection.AssemblyProductAttribute("NTBRenamer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NTBRenamer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
