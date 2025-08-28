@@ -1,4 +1,5 @@
-﻿using NTBRenamer.Core;
+﻿using Ghostscript.NET.Processor;
+using NTBRenamer.Core;
 using System.Diagnostics;
 using System.IO;
 
@@ -149,15 +150,17 @@ public class NTBRenamerViewModel : BaseViewModel
     #endregion
 
     #region Private Methods
-    public static void ExecuteBatchFile(string batchPath, string dir)
+    public static void ExecuteBatchFile(string batchPath, string directory)
     {
+        BatchFileExecutor.RunGhostscriptBatchFile(batchPath, directory);
+        /*
         try
         {
             ProcessStartInfo start = new()
             {
                 Arguments = $"/C \"{batchPath}\"",
                 CreateNoWindow = true,
-                WorkingDirectory = dir,
+                WorkingDirectory = directory,
                 FileName="cmd.exe",
                 RedirectStandardError = true,
                 RedirectStandardOutput = true,
@@ -175,6 +178,7 @@ public class NTBRenamerViewModel : BaseViewModel
         {
             var test = ex.Message;
         }
+        */
     }
 
     public void FileCleanup()
