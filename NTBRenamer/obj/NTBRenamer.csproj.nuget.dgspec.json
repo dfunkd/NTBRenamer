@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Source\\NTBRenamer\\NTBRenamer\\NTBRenamer.csproj": {}
+    "C:\\Users\\dfunk\\source\\GitRepo\\NTBRenamer\\NTBRenamer\\NTBRenamer.csproj": {}
   },
   "projects": {
-    "C:\\Source\\NTBRenamer\\NTBRenamer\\NTBRenamer.csproj": {
+    "C:\\Users\\dfunk\\source\\GitRepo\\NTBRenamer\\NTBRenamer\\NTBRenamer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Source\\NTBRenamer\\NTBRenamer\\NTBRenamer.csproj",
+        "projectUniqueName": "C:\\Users\\dfunk\\source\\GitRepo\\NTBRenamer\\NTBRenamer\\NTBRenamer.csproj",
         "projectName": "NTBRenamer",
-        "projectPath": "C:\\Source\\NTBRenamer\\NTBRenamer\\NTBRenamer.csproj",
+        "projectPath": "C:\\Users\\dfunk\\source\\GitRepo\\NTBRenamer\\NTBRenamer\\NTBRenamer.csproj",
         "packagesPath": "C:\\Users\\dfunk\\.nuget\\packages\\",
-        "outputPath": "C:\\Source\\NTBRenamer\\NTBRenamer\\obj\\",
+        "outputPath": "C:\\Users\\dfunk\\source\\GitRepo\\NTBRenamer\\NTBRenamer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
