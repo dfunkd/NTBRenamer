@@ -7,7 +7,7 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="Foreground" Value="{DynamicResource ButtonBrush}" />
-        <Setter Property="Height" Value="25" />
+        <Setter Property="Height" Value="30" />
         <Setter Property="Padding" Value="5" />
         <Setter Property="Width" Value="125" />
 

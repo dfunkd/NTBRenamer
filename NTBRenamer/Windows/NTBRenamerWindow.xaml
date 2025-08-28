@@ -60,7 +60,7 @@
                     <TextBlock Foreground="{DynamicResource DarkerHeaderFade}" FontWeight="Bold" FontSize="24" HorizontalAlignment="Left" Margin="10, 8, 5, 0"
                                Text="NTB Archive Files Renamer" VerticalAlignment="Center" />
                 </StackPanel>
-                <Button Grid.Column="2" Command="local:NTBRenamerWindow.CloseCommand" Height="25" Margin="5, 0" VerticalAlignment="Center" Width="25">
+                <Button Grid.Column="2" Command="local:NTBRenamerWindow.CloseCommand" Margin="5, 0" VerticalAlignment="Center" Width="30">
                     <Button.Content>
                         <TextBlock Text="X" />
                     </Button.Content>
@@ -86,7 +86,7 @@
         <TextBlock x:Name="txtElapsed" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" FontSize="16" FontWeight="Bold" Foreground="{DynamicResource Lightest}"
                    HorizontalAlignment="Center" Margin="10, 0" Text="{Binding ElapsedTime, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" />
 
-        <Border Grid.Column="1" Grid.Row="3" Background="{DynamicResource DarkHeaderFade}" CornerRadius="8" Margin="5">
+        <Border Grid.Column="1" Grid.Row="3" Background="{DynamicResource DarkHeaderFade}" CornerRadius="8" Margin="0, 5">
             <DockPanel LastChildFill="True">
                 <TextBlock DockPanel.Dock="Left" FontSize="14" FontWeight="Bold" Foreground="{DynamicResource ButtonBrush}" HorizontalAlignment="Right" Margin="35, 5, 10, 5"
                            Text="Directory" />
@@ -103,25 +103,25 @@
         </Border>
 
         <DockPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4" HorizontalAlignment="Center" LastChildFill="False" Margin="10">
-            <Button DockPanel.Dock="Left" Command="local:NTBRenamerWindow.ProcessCommand" Height="25" Margin="5, 0" VerticalAlignment="Center" Width="150">
+            <Button DockPanel.Dock="Left" Command="local:NTBRenamerWindow.ProcessCommand" Margin="5, 0" VerticalAlignment="Center" Width="150">
                 <Button.Content>
                     <TextBlock Text="Process Files" />
                 </Button.Content>
             </Button>
 
-            <Button DockPanel.Dock="Left" Command="local:NTBRenamerWindow.RunBatchCommand" Height="25" Margin="5, 0" VerticalAlignment="Center" Width="150">
+            <Button DockPanel.Dock="Left" Command="local:NTBRenamerWindow.RunBatchCommand" Margin="5, 0" VerticalAlignment="Center" Width="150">
                 <Button.Content>
                     <TextBlock Text="Run Batch Process" />
                 </Button.Content>
             </Button>
 
-            <Button DockPanel.Dock="Left" Command="local:NTBRenamerWindow.StripExtensionsCommand" Height="25" Margin="5, 0" VerticalAlignment="Center" Width="150">
+            <Button DockPanel.Dock="Left" Command="local:NTBRenamerWindow.StripExtensionsCommand" Margin="5, 0" VerticalAlignment="Center" Width="150">
                 <Button.Content>
                     <TextBlock Text="Strip Extensions" />
                 </Button.Content>
             </Button>
 
-            <Button DockPanel.Dock="Left" Command="local:NTBRenamerWindow.FileCleanupCommand" Height="25" Margin="5, 0" VerticalAlignment="Center" Width="150">
+            <Button DockPanel.Dock="Left" Command="local:NTBRenamerWindow.FileCleanupCommand" Margin="5, 0" VerticalAlignment="Center" Width="150">
                 <Button.Content>
                     <TextBlock Text="File Cleanup" />
                 </Button.Content>
